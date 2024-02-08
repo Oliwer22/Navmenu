@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu creatie</title>
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="menuContainer"></div>
+  <script>
+    //makes the navmenu
+    const menuItems = [
+      {"title": "Home", "url": "#"}, //Sends/stays on main page
+      {"title": "Producten", "url": "/producten/"}, //Sends to error page doesnt exsist
+      {"title": "Overons", "url": "/overons/"},//Sends to error page doesnt exsist
+      {"title": "Contact", "url": "/contact/"}//Sends to error page doesnt exsist
+    ];
+    function generateMenu(items) {
+      const menuContainer = document.getElementById('menuContainer');
+      const ul = document.createElement('ul');
+      //items for the menu container
+      items.forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        //create link 
+        a.href = item.url;
+        a.textContent = item.title;
+
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+
+      menuContainer.appendChild(ul);
+    }
+    generateMenu(menuItems);
+  </script>
+
+</body>
+</html>
